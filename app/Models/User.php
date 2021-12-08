@@ -7,10 +7,45 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+
+use App\Models\Departament;
+use App\Models\NamesUser;
+use App\Models\Client;
+use App\Models\Document;
+use App\Models\Task;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+
+    // Retorna la relacion entre un Usuario y sus Nombres
+    public function names()
+    {
+        return $this->hasOne(NamesUser::class);
+    }
+
+    //  Retorna la relacion entre un Usuario y el Departamento al que pertenece
+    public function departament()
+    {
+        return $this->belongsTo(Departament::class);
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    //  Retorna la relacion entre un Usuario y un Documento
+    // public function documents()
+    // {
+    //     return $this->hasMany(Document::class);
+    // }
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +53,12 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'cedula',
         'email',
         'password',
+        'sex',
+        'telefono',
+        'departament_id'
     ];
 
     /**

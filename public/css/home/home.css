@@ -1,0 +1,414 @@
+html,body {
+	font-family: roboto;
+	font-size: 16px;
+	background: var(--bs-light);
+}
+
+
+/* ---------------------HEADER---------------------- */
+.header {
+	width: 100%;
+}
+
+.header  div, .header img {
+	width: inherit;
+	height: inherit;
+}
+
+/* ---------------------objetice---------------------- */
+
+.image-box-objetive {
+	display: flex;
+	position: relative;
+	width: 100%;
+	max-width: 100vw;
+	max-height: calc(500rem / 16);
+	overflow: hidden;
+}
+
+.image-box-objetive img {
+	width: inherit;
+	filter: blur(3px);
+}
+
+.image-box-objetive::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: .6;
+	background: #480209;
+}
+
+.text-box-objetive {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	position: absolute;
+	z-index: 2;
+	width: 50%;
+	height: 100%;
+	margin: 0 2em;
+	gap: 2em;
+	font-size: 1rem;
+	font-family: 'times new roman';
+	text-align: justify;
+	word-wrap: anywhere;
+	color: white;
+}
+
+.text-box-objetive p {
+	font-size: 2em;
+}
+
+/* ---------------------navbar---------------------- */
+
+.bg-navbar {
+	background: #9c0000;
+}
+
+/* ---------------------carrusel---------------------- */
+
+section#carrusel {
+	margin: 5rem 0;
+}
+
+.carousel-inner::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	z-index: 0;
+	width: 100%;
+	height: 34%;
+	opacity: .6;
+	background: var(--bs-dark);
+}
+
+.carousel-caption {
+	z-index: 2;
+}
+
+.carousel-caption p {
+	margin: 0;
+}
+
+.carousel-indicators {
+	z-index: 3;
+}
+
+/* ---------------------content---------------------- */
+/*section#content {
+	margin: 5rem 0;
+}*/
+
+.box {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-areas: "image text" 
+											 "image text";
+	grid-gap: 2em;
+	width: 100%;
+	margin: 5rem 0;
+	border-radius: 10px;
+	box-shadow: 0 0 8px #000;
+}
+
+.image-box {
+	grid-area: image;
+	border-radius: inherit;
+}
+
+.image-box img {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px 0 0 10px;
+}
+
+.text-box {
+	grid-area: text;
+	text-align: justify;
+}
+
+.text-box h2 {
+	margin: 0;
+	text-align: center;
+	color: #bc0000;
+}
+
+.text-box p {
+	padding: .5rem;
+}
+/* ---------------------objetive-ministerio---------------------- */
+
+.box-obj-minis {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: "header header header header" 
+											 "obj1 obj2 obj2 obj3"
+											 "obj4 obj4 obj5 obj5";
+	grid-gap: 1em;
+	width: 100%;
+	height: 100%;
+	padding: 1em;
+	background: #f6f6f6;
+	color: white;
+}
+
+.header-obj-minis {
+	grid-area: header;
+	justify-self: center;
+	align-self: self-end;
+	color: #bc0000;
+}
+
+.item-obj-minis {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 1em;
+	filter: grayscale(100%);
+	transition: all .4s ease;
+	background: #fff;
+	color: inherit;
+}
+
+.item-obj-minis:hover {
+	filter: grayscale(0);
+	outline: 1px solid #ff0000;
+	box-shadow: 0 0 1em rgba(255, 0, 0, .5);
+}
+
+.obj-1 {
+	grid-area: obj5;
+}
+.obj-2 {
+	grid-area: obj2;
+}
+.obj-3 {
+	grid-area: obj3;
+}
+.obj-4 {
+	grid-area: obj4;
+}
+.obj-5 {
+	grid-area: obj1;
+}
+
+.obj-image {
+	user-select: none;
+	width: 100px;
+}
+
+.obj-description {
+	text-align: center;
+	color: #000;
+}
+
+/* ---------------------banner-bottom---------------------- */
+
+.banner-bottom {
+	width: 100%;
+	max-height: 300px;
+}
+
+.banner-bottom img {
+	width: inherit;
+	height: 250px;
+}
+
+/* ---------------------footer---------------------- */
+
+
+.footer {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-template-areas: "image text";
+	align-items: center;
+	width: 100%;
+	background: var(--bs-dark);
+}
+
+.footer-image {
+	grid-area: image;
+}
+
+.footer-image img {
+	height: 70px;
+}
+
+.footer-content {
+	grid-area: text;
+	text-align: justify;
+	color: #fff;
+}
+
+.footer-content p {
+	margin: 0;
+}
+
+
+
+
+/* ---------------------Media Querys---------------------- */
+
+@media screen and (min-width:  300px){
+
+	.header {
+		height: 30px;
+	}
+
+	.text-box-objetive {
+		width: 100%;
+		flex-flow: column;
+		justify-content: stretch;
+		gap: 0;
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	.text-box-objetive p {
+		font-size: .9rem;
+	}
+
+	.box {
+		grid-template-columns: 1fr;
+		grid-template-areas:  "image"
+													"text";
+	}
+
+	.image-box img {
+		border-radius: 10px 10px 0 0;
+	}
+
+	.box-obj-minis {
+		grid-template-columns: 100%;
+		grid-template-areas: "header"
+												 "obj1"
+												 "obj2"
+												 "obj3"
+												 "obj4"
+												 "obj5";
+		justify-content: center;
+	}
+
+	.obj-description {
+		text-align: justify;
+		font-size: 1.2em;
+	}
+
+	.footer {
+		grid-template-columns: 100%;
+		grid-template-areas: "image" 
+												 "text";
+	}
+
+	.footer-image {
+		text-align: center;
+	}
+
+	.footer-content {
+		font-size: calc(1rem - 20%);
+	}
+
+}
+
+@media screen and (min-width: calc(576px)){
+
+	.header {
+		height: 40px;
+	}
+
+	.text-box-objetive {
+		justify-content: space-evenly;
+	}
+
+	.text-box-objetive p {
+		font-size: 1.5rem;
+	}
+
+
+	/* .carousel-inner::after {
+		height: 100%;
+	}
+
+	.carousel-caption {
+		bottom: 32%;
+	} */
+
+	.box {
+		grid-template-columns: 1fr;
+		grid-template-areas:  "image"
+													"text";
+	}
+
+	.image-box img {
+		border-radius: 10px 10px 0 0;
+	}
+
+	.footer {
+		grid-template-columns: .5fr 1fr 1fr;
+		grid-template-areas: "image text text";
+	}
+
+	.footer-content {
+		font-size: 1rem;
+	}
+
+}
+
+@media screen and (min-width:  calc(768px)){
+
+	.header {
+		height: 50px;
+	}
+
+	.text-box-objetive p {
+		font-size: 2rem;
+	}
+
+	.obj-description {
+		font-size: 1.4rem;
+	}
+}
+
+@media screen and (min-width:  calc(868px)) {
+
+	.header {
+		height: 60px;
+	}
+
+	.text-box-objetive {
+		justify-content:  space-evenly;
+		align-items: center;
+	}
+
+	.text-box-objetive p {
+		font-size: 2.3rem;
+		text-align: center;
+	}
+
+	.box {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas: "image text";
+	}
+
+	.image-box img {
+		border-radius: 10px 0 0 10px;
+	}
+
+	.box-obj-minis {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-areas: "header header header header" "obj1 obj2 obj2 obj3" "obj4 obj4 obj5 obj5";
+	}
+
+	.obj-description {
+		font-size: 1.2rem;
+	}
+
+	.footer {
+		grid-template-columns: .4fr 1fr 1fr;
+	}
+}
