@@ -22,15 +22,21 @@ class UsersController extends Controller
 
     public function new()
     {
-        $departaments = Departament::all();
-
         $user = auth()->user();
+
         if ($user->hasRole('admin')) {
-            $roles = Role::all();
+            $departaments = Departament::all();
+            $roles = Role::where('name', '!=', 'admin')->get();
+
             return view('users/new', compact('departaments', 'roles', 'user'));   
         } else if ($user->hasRole('coordinator')) {
-            $roles = Role::where('name', '!=', 'admin')->get();
-            return view('users/new', compact('departaments', 'roles', 'user'));
+            $departament = $user->departament;
+            $user_role = $user->getRoleNames()[0];
+            $roles = Role::where('name', '!=', 'admin')
+                ->where('name', '!=', $user_role)
+                ->get();
+
+            return view('users/new', compact('departament', 'roles', 'user'));
         } else {
         	return view('users/new');   
         }
@@ -47,12 +53,12 @@ class UsersController extends Controller
 
         $user = User::create($data_user);
 
-        $user->assignRole(request()->role);
-
         $data_names = request()->only('first_name', 'first_surname', 'second_name', 'second_surname');
         $data_names = $this->capitalize($data_names);
 
         if ($user->names()->create($data_names)) {
+            $user->assignRole(request()->role);
+            
             return back()->with('success', 'Usuario Registrado');
         }
 
@@ -61,15 +67,18 @@ class UsersController extends Controller
     public function edit()
     {
 
-        $departaments = Departament::all();
         $user = auth()->user();
 
         if ($user->hasRole('admin')) {
-            $roles = Role::all();
-            return view('users/edit', compact('departaments', 'roles', 'user'));   
+            $departaments = Departament::all();
+            $role = Role::where('name', '=', $user->getRoleNames()[0])->get()[0];
+            
+            return view('users/edit', compact('departaments', 'role', 'user'));  
         } else if ($user->hasRole('coordinator')) {
-            $roles = Role::where('name', '!=', 'admin')->get();
-            return view('users/edit', compact('departaments', 'roles', 'user'));
+            $departament = $user->departament;
+            $role = Role::where('name', '=', $user->getRoleNames()[0])->get()[0];
+
+            return view('users/edit', compact('departament', 'role', 'user'));
         } else {
             return view('users/edit', compact('user'));   
         }

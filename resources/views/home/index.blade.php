@@ -27,7 +27,7 @@
 			<div class="container-fluid">
 
 				@if (auth()->check())
-					<span class="navbar-brand">{{auth()->user()->names->first_name}}</span>
+					<span class="navbar-brand">{{auth()->user()->names->first_name . ' ' . auth()->user()->names->first_surname}}</span>
 				@else
 					<span class="navbar-brand"></span>
 				@endif
@@ -64,7 +64,6 @@
 							<a href="{{route('logout_path')}}" class="btn btn-outline-light">Cerrar Session</a>
 						@else
 							<a href="{{route('login_path')}}" class="btn btn-outline-light me-2">Iniciar Session</a>
-							<a href="{{route('new_user_path')}}" class="btn btn-outline-light">Registrarse</a>
 						@endif
 					</div>
 				</div>

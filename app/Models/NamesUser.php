@@ -11,7 +11,6 @@ class NamesUser extends Model
 {
     use HasFactory;
 
-    // Retorna la relacion entre los Nombres de Usuario y un Usuario
     public function user()
     {
         return $this->belongsTo(User::class);

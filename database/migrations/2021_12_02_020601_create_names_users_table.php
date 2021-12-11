@@ -14,17 +14,15 @@ class CreateNamesUsersTable extends Migration
     public function up()
     {
         Schema::create('names_users', function (Blueprint $table) {
-            $table->id();
+            $table->id('user_id');
             $table->string('first_name', 50);
             $table->string('first_surname', 50);
             $table->string('second_name', 50)->nullable();
             $table->string('second_surname', 50)->nullable();
 
-            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->timestamps();

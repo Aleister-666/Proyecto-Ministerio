@@ -9,11 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-use App\Models\Departament;
 use App\Models\NamesUser;
+use App\Models\Departament;
+use App\Models\Task;
 use App\Models\Client;
 use App\Models\Document;
-use App\Models\Task;
 
 class User extends Authenticatable
 {
@@ -31,21 +31,15 @@ class User extends Authenticatable
         return $this->belongsTo(Departament::class);
     }
 
-    public function clients()
-    {
-        return $this->hasMany(Client::class);
-    }
-
     public function tasks()
     {
         return $this->hasMany(Task::class);
     }
 
-    //  Retorna la relacion entre un Usuario y un Documento
-    // public function documents()
-    // {
-    //     return $this->hasMany(Document::class);
-    // }
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
 
     /**
      * The attributes that are mass assignable.

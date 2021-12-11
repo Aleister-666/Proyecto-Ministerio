@@ -15,13 +15,27 @@
 	    <h2>Requerimientos de la solicitud</h2>
 	  </div>
 
-
 	  <div class="row g-5 justify-content-center">
 
 	  	<div class="col-md-7 col-lg-8">
-        <h4 class="mb-3"></h4>
 
-	      <form action="" method="POST">
+     	  @if ($message = Session::get('success'))
+         <div class="alert alert-success text-center">
+           {{$message}}
+         </div>
+        @else
+
+        	@error('message')
+
+        		<div class="alert alert-danger text-center">
+        			{{$message}}
+        		</div>
+        		
+        	@enderror
+
+        @endif
+
+	      <form action="{{route('create_gmvv_request_path')}}" method="POST" enctype="multipart/form-data">
 
 	      	@csrf
 	      	
@@ -213,4 +227,6 @@
 	  </div>
 	</main>
 
+	<script src="{{asset('js/common/disabled_form.js')}}"></script>
+	
 @endsection

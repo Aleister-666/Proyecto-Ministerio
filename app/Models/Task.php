@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 ////////////////////////////////////////////////////////////////
 use App\Models\Departament;
 use App\Models\User;
-use App\Models\Client;
 
 /////////////////////////////////////////////////////////////////////////
 // Aqui colocamos todas las tareas que se podra realizar en el sistema //
@@ -33,20 +32,13 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
-
-    public function gmvv_request()
+    public function gmvv_requests()
     {
         return $this->hasMany(GmvvRequest::class);
     }
 
     protected $fillable = [
-        'type',
         'departament_id',
-        'user_id',
-        'client_id'
+        'user_id'
     ];
 }

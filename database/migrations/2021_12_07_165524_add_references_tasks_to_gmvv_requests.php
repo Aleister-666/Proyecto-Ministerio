@@ -15,10 +15,8 @@ class AddReferencesTasksToGmvvRequests extends Migration
     {
         Schema::table('gmvv_requests', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('type_task');
-            $table->foreign('type_task')
-                ->references('type')
-                ->on('tasks')
+            $table->foreignId('task_id')
+                ->constrained('tasks')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -33,8 +31,8 @@ class AddReferencesTasksToGmvvRequests extends Migration
     public function down()
     {
         Schema::table('gmvv_requests', function (Blueprint $table) {
-            $table->dropForeign(['type_task']);
-            $table->dropColumn('type_task');
+            $table->dropForeign(['task_id']);
+            $table->dropColumn('task_id');
         });
     }
 }

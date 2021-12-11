@@ -10,10 +10,5 @@ class HomeController extends Controller
     public function index()
     {
         return view('home/index');
-        // if (Auth::viaRemember()) {
-        //     return "Hola Mundo";
-        // } else{
-        //     return "NO RECORDADO";
-        // }
     }
 }

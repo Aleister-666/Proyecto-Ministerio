@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddReferencesUsersToClients extends Migration
+class AddReferencesClientsToGmvvRequests extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class AddReferencesUsersToClients extends Migration
      */
     public function up()
     {
-        Schema::table('clients', function (Blueprint $table) {
+        Schema::table('gmvv_requests', function (Blueprint $table) {
 
-
-            $table->foreignId('user_id')
-                ->nullable()
-                ->constrained('users')
+            $table->foreignId('client_id')
+                ->constrained('clients')
                 ->onUpdate('cascade')
-                ->nullOnDelete();
+                ->onDelete('cascade');
         });
     }
 
@@ -31,9 +29,9 @@ class AddReferencesUsersToClients extends Migration
      */
     public function down()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropColumn('user_id');
+        Schema::table('gmvv_requests', function (Blueprint $table) {
+            $table->dropForeign('client_id');
+            $table->dropColumn('client_id');
         });
     }
 }

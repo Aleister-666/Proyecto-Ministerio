@@ -63,17 +63,45 @@
 	          		</ul>
 	          	</div>
 	          </li>
+
 	          <li class="nav-item">
-	            <a class="nav-link @yield('active-5')" href="#">
-	              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-	              Reports
-	            </a>
+
+	            <div class="dropdown">
+	          		<a type="button" id="dropdown-menu-reports" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle @yield('active-5')">
+	          			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+	          			Reportes
+	          		</a>
+
+	          		@if ($user->departament->name == 'Redes Populares')	
+	          				<ul aria-labelledby="dropdown-menu-task" class="dropdown-menu">
+	          					<li>
+	          						<a href="{{route('index_gmvv_request_path')}}" class="dropdown-item">GMVV</a>
+	          					</li>
+	          				</ul>
+	          		@endif
+
+	          	</div>
+
 	          </li>
+
 	          <li class="nav-item">
-	            <a class="nav-link @yield('active-6')" href="#">
-	              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-	              Subir Archivo
-	            </a>
+
+	            <div class="dropdown">
+	          		<a type="button" id="dropdown-menu-task" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle @yield('active-6')">
+	          			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+	          			Tareas
+	          		</a>
+
+	          		@if ($user->departament->name == 'Redes Populares')	
+	          				<ul aria-labelledby="dropdown-menu-task" class="dropdown-menu">
+	          					<li>
+	          						<a href="{{route('new_gmvv_request_path')}}" class="dropdown-item">Registro GMVV</a>
+	          					</li>
+	          				</ul>
+	          		@endif
+
+        			</div>
+
 	          </li>
 	        </ul>
 

@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="login-content">
-		<div class="row justify-content-center align-items-center p-3 bg-light">
+		<div class="row justify-content-center align-items-center p-3 rounded-3 text-white bg-red-dark-transparent">
 
 			<div class="text-center">
 				<img src="{{asset('images/sessions/logo GMVV.png')}}" alt="">
@@ -34,8 +34,8 @@
 				</div>
 
 				@error('cedula')
-					<div class="text-danger">
-						<p>{{$message}}</p>
+					<div class="alert alert-danger text-center">
+						<p class="m-0">{{$message}}</p>
 					</div>
 				@enderror
 
@@ -45,8 +45,8 @@
 				</div>
 
 				@error('password')
-					<div class="text-danger">
-						<p>{{$message}}</p>
+					<div class="alert alert-danger text-center">
+						<p class="m-0">{{$message}}</p>
 					</div>
 				@enderror
 

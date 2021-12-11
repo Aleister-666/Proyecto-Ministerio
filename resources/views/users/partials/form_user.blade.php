@@ -68,15 +68,30 @@
               @enderror
             </div>
 
-            @if (auth()->user()->hasRole(['admin', 'coordinator']))
+            @if ($user->hasRole(['admin', 'coordinator']))
 
 	            <div class="col-sm-6">
                 <label for="departament" class="form-label">Departamento de trabajo</label>
               	<select class="form-select" name="departament" aria-label="Default select example">
-              	  <option value="" selected>Selecciona un departamento de trabajo</option>
-	              	  @foreach($departaments as $departament)
-	  	            	  <option value="{{$departament->id}}">{{$departament->name}}</option>
-	              	  @endforeach
+
+                  @if ($form_method == "PUT")
+                    <option value="{{$departament->id}}" selected>{{$departament->name}}</option>
+
+                  @else
+                    <option value="" selected>Selecciona un departamento de trabajo</option>
+
+                    @if ($user->hasRole('admin'))
+                      @foreach($departaments as $departament)
+                        <option value="{{$departament->id}}">{{$departament->name}}</option>
+                      @endforeach
+
+                    @else
+                      <option value="{{$departament->id}}">{{$departament->name}}</option>
+
+                    @endif
+  
+                  @endif
+
               	</select>
               	@error('departament')
               		<div class="text-danger w-100">
@@ -88,10 +103,18 @@
               <div class="col-sm-6">
                 <label for="role" class="form-label">Cargo de Trabajo</label>
               	<select class="form-select" name="role" aria-label="Default select example">
-              	  <option value="" selected>Selecciona un cargo para este usuario</option>
-	              	  @foreach($roles as $role)
-	  	            	  <option value="{{$role->id}}">{{$role->name}}</option>
-	              	  @endforeach
+
+                  @if ($form_method == 'PUT')
+                    <option value="{{$role->id}}" selected>{{$role->name}}</option>
+                  @else
+
+                    <option value="" selected>Selecciona un cargo para este usuario</option>
+                    @foreach($roles as $role)
+                      <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+
+                  @endif
+
               	</select>
 
               	@error('role')

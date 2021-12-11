@@ -11,7 +11,6 @@ class NamesClient extends Model
 {
     use HasFactory;
 
-    // Retorna la relacion entre los Nombres de cliente y un cliente
     public function client()
     {
         return $this->belongsTo(Client::class);

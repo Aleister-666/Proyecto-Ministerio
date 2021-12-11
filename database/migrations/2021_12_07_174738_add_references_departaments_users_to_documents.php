@@ -14,17 +14,14 @@ class AddReferencesDepartamentsUsersToDocuments extends Migration
     public function up()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->unsignedBigInteger('departament_id');
-            $table->foreign('departament_id')
-                ->references('id')
-                ->on('departaments')
+
+            $table->foreignId('departament_id')
+                ->constrained('departaments')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignId('user_id')
+                ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

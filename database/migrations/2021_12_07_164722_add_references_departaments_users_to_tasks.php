@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddReferencesDepartamentsUsersClientsToTasks extends Migration
+class AddReferencesDepartamentsUsersToTasks extends Migration
 {
     /**
      * Run the migrations.
@@ -15,26 +15,16 @@ class AddReferencesDepartamentsUsersClientsToTasks extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('departament_id');
-            $table->foreign('departament_id')
-                ->references('id')
-                ->on('departaments')
+            $table->foreignId('departament_id')
+                ->constrained('departaments')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
+            $table->foreignId('user_id')
+                ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
-            $table->unsignedBigInteger('client_id');            
-            $table->foreign('client_id')
-                ->references('id')
-                ->on('clients')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            
         });
     }
 
@@ -51,9 +41,6 @@ class AddReferencesDepartamentsUsersClientsToTasks extends Migration
 
             $table->dropForeign(['user_id']);
             $table->dropColumn('user_id');
-
-            $table->dropForeign(['client_id']);
-            $table->dropColumn('client_id');
         });
     }
 }

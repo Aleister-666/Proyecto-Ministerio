@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Task;
+use App\Models\Client;
 
 class GmvvRequest extends Model
 {
@@ -16,8 +17,12 @@ class GmvvRequest extends Model
         return $this->belongsTo(Task::class);
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
     protected $fillable = [
-        'type_id',
         'copy_ci',
         'contancy_job',
         'contancy_home',
@@ -25,6 +30,8 @@ class GmvvRequest extends Model
         'birth_certificate_children',
         'sworn_declaration',
         'registration_form_gmvv',
-        'explanatory_statement'
+        'explanatory_statement',
+        'task_id',
+        'client_id'
     ];
 }

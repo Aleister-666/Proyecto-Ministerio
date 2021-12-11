@@ -6,21 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\NamesClient;
-use App\Models\Task;
+use App\Models\User;
+use App\Models\GmvvRequest;
 
 class Client extends Model
 {
     use HasFactory;
 
-    // Retorna la relacion entre un Cliente y sus Nombres
     public function names()
     {
         return $this->hasOne(NamesClient::class);
     }
 
-    public function tasks()
+    public function user()
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function gmvv_request()
+    {
+        return $this->hasOne(GmvvRequest::class);
     }
 
     protected $fillable = [
@@ -28,5 +33,6 @@ class Client extends Model
         'email',
         'sex',
         'telefono',
+        'user_id'
     ];
 }
