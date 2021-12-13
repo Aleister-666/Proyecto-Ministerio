@@ -22,6 +22,14 @@ class GmvvRequestsController extends Controller
         return view('gmvv_requests/index', compact('user', 'clients'));
     }
 
+    public function search()
+    {
+        $cedula = request()->cedula;
+        $clients = $this->gmvv_requests_clients($cedula);
+        return view('gmvv_requests/partials/search_results', compact('clients'));
+
+    }
+
     public function new()
     {   
         $user = auth()->user();
@@ -190,35 +198,35 @@ class GmvvRequestsController extends Controller
                 'explanatory_statement' => $files_name_store['explanatory_statement'],
                 'client_id' => $client->id               
             ]);
-
-            // return $gmvv_requests = GmvvRequest::create([
-            //     'task_id' => $task_id,
-            //     'copy_ci' => $files_name_store['copy_ci'],
-            //     'contancy_job' => $files_name_store['contancy_job'],
-            //     'contancy_home' => $files_name_store['contancy_home'],
-            //     'contancy_civil' => $files_name_store['contancy_civil'],
-            //     'birth_certificate_children' => $files_name_store['birth_certificate_children'],
-            //     'sworn_declaration' => $files_name_store['sworn_declaration'],
-            //     'registration_form_gmvv' => $files_name_store['registration_form_gmvv'],
-            //     'explanatory_statement' => $files_name_store['explanatory_statement']
-            // ]);
         }
     }
 
-    private function gmvv_requests_clients()
+    private function gmvv_requests_clients($cedula = null)
     {
-        // return Client::join('names_clients', 'clients.id', '=', 'names_clients.client_id')
-        //         ->join('tasks', 'clients.id', '=', 'tasks.client_id')
-        //         ->join('gmvv_requests', 'tasks.id', '=', 'gmvv_requests.task_id')
-        //         ->select('clients.*', 'names_clients.*')
-        //         ->get();
-        //         
-        
-        return Client::join('names_clients', 'clients.id', '=', 'names_clients.client_id')
-                ->join('gmvv_requests', 'clients.id', '=', 'gmvv_requests.client_id')
-                ->get();
-        
+        $select = [
+            'clients.id',
+            'cedula',
+            'first_name',
+            'first_surname',
+            'second_name',
+            'second_surname',
+            'email',
+            'telefono'
+        ];
 
+        if ($cedula) {
+            return Client::select(...$select)
+                    ->join('names_clients', 'clients.id', '=', 'names_clients.client_id')
+                    ->join('gmvv_requests', 'clients.id', '=', 'gmvv_requests.client_id')
+                    ->where('cedula', 'LIKE', $cedula . "%")
+                    ->paginate(20);
+        } else {
+            return Client::select(...$select)
+                    ->join('names_clients', 'clients.id', '=', 'names_clients.client_id')
+                    ->join('gmvv_requests', 'clients.id', '=', 'gmvv_requests.client_id')
+                    ->paginate(20);
+
+        }
     }
 
 }

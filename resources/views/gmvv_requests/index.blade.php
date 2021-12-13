@@ -10,7 +10,19 @@
 
 @section('main_content')
 
-	<div class="table-responsive">
+	<div class="my-4">
+		<input type="text" id="search" name="cedula" placeholder="Cedula a buscar..." class="form-control" autocomplete="off">
+
+		<div id="spinner" class="visually-hidden">
+			<div class="spinner-border text-primary" role="status">
+			  <span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+
+		<div id="results" class="my-4"></div>
+	</div>
+
+	<div id="table" class="table-responsive">
 	  <table class="table table-striped table-hover table-sm">
 	    <thead>
 	      <tr>
@@ -59,8 +71,40 @@
 	      @endforeach
 	    </tbody>
 	  </table>
+	  {{$clients->links()}}
 	</div>
 
 @endsection
 
+@section('js')
 
+	<script>
+
+		const d = document;
+
+		d.addEventListener('DOMContentLoaded', () => {
+
+			d.getElementById('search').addEventListener('keyup', () => {
+				let cedula = d.getElementById('search').value.trim();	
+				if (cedula.length >= 1) {
+					d.getElementById('spinner').classList.remove('visually-hidden');
+					url = `{{route('search_gmvv_request_path')}}?cedula=${cedula}`;
+
+					fetch(url)
+					.then(res => res.text())
+					.then(html => {
+						d.getElementById('results').innerHTML = html;
+						d.getElementById('spinner').classList.add('visually-hidden');
+
+					})
+					.catch(err => alert(err))
+				} else {
+					d.getElementById('spinner').classList.add('visually-hidden');
+					d.getElementById('results').innerHTML = '';
+				}
+			})
+		})
+
+	</script>
+
+@endsection

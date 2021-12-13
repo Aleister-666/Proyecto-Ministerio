@@ -97,6 +97,9 @@ Route::prefix('workplace')->group(function() {
 		Route::get('/tasks/gmvv_request/download/{id}', [GmvvRequestsController::class, 'download'])
 			->name('download_gmvv_request_path');
 
+		Route::get('/tasks/gmvv_request/search', [GmvvRequestsController::class, 'search'])
+			->name('search_gmvv_request_path');
+
 	});
 
 });

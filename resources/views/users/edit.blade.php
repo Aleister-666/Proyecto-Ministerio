@@ -20,3 +20,7 @@
 		'submit_value' => 'Actualizar'
 	])
 @endsection
+
+@section('js')
+	<script src="{{asset('js/common/disabled_form.js')}}"></script>
+@endsection
