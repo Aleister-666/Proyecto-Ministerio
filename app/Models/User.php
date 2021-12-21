@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasMany(Client::class);
     }
 
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

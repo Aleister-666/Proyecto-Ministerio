@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WorkplaceController extends Controller
 {
+    /**
+     * Proporciona la vista index
+     * @return Html HTML con las datos del usuario actualmente loggeado
+     */
     public function index()
     {
         $user = auth()->user();

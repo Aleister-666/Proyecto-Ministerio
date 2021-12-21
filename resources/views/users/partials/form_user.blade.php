@@ -146,6 +146,14 @@
             @endif
 
             <div class="col-sm-6">
+              <label for="cedula" class="form-label">Cedula</label>
+              <div class="input-group">
+                <span class="input-group-text user-select-none">V</span>
+                <input type="text" class="form-control"value="{{$cedula_value}}" readonly>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
               <label for="sex" class="form-label">Sexo</label>
               <select name="sex" class="form-select">
                 <option value="hombre" selected>Hombre</option>
@@ -208,13 +216,5 @@
       @include('commons/spinner_form')
 
   </div>
-
-{{--   <footer class="my-5 text-muted text-center text-small">
-    <p class="mb-1">Ministerio del Poder Popular para Habitat y Vivienda</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="{{route('root_path')}}">Pagina de Inicio</a></li>
-      <li class="list-inline-item"><a href="{{route('workplace_path')}}">Area de Trabajo</a></li>
-    </ul>
-  </footer> --}}
 
 </div>

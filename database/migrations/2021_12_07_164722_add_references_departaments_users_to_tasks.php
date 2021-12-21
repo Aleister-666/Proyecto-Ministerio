@@ -14,7 +14,6 @@ class AddReferencesDepartamentsUsersToTasks extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-
             $table->foreignId('departament_id')
                 ->constrained('departaments')
                 ->onUpdate('cascade')

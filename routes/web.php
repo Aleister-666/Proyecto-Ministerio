@@ -41,18 +41,17 @@ Route::middleware(['guest'])->group(function() {
 Route::get('logout', [SessionsController::class, 'destroy'])
 	->name('logout_path');
 
-/**
- * Workplace
- */
-
-Route::prefix('workplace')->middleware(['auth'])->group(function() {
-
-	Route::get('', [WorkplaceController::class, 'index'])
-	->name('workplace_path');
-
-});
-
 Route::prefix('workplace')->group(function() {
+
+
+	/**
+	 * Workplace
+	 */
+	Route::middleware(['auth'])->group(function() {
+		Route::get('', [WorkplaceController::class, 'index'])
+			->name('workplace_path');
+
+	});
 
 	/**
 	 * Controlador de Usuario
@@ -76,6 +75,7 @@ Route::prefix('workplace')->group(function() {
 		Route::put('/update_user', [UsersController::class, 'update'])
 			->name('update_user_path');
 	});
+	
 
 	/**
 	 * Controlador de Peticion GMVV
@@ -99,6 +99,9 @@ Route::prefix('workplace')->group(function() {
 
 		Route::get('/tasks/gmvv_request/search', [GmvvRequestsController::class, 'search'])
 			->name('search_gmvv_request_path');
+
+		Route::get('/tasks/gmvv_request/files', [GmvvRequestsController::class, 'files'])
+			->name('files_gmvv_request_path');
 
 	});
 

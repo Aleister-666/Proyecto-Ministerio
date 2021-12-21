@@ -20,6 +20,10 @@ class UsersController extends Controller
         return view('users/show', compact('user'));
     }
 
+    /**
+     * Proporciona la vista correspondiente con el rol del usuario
+     * @return [type] [description]
+     */
     public function new()
     {
         $user = auth()->user();
@@ -43,6 +47,9 @@ class UsersController extends Controller
 
     }
 
+    /**
+     * Crea un nuevo usuario 
+     */
     public function create()
     {
         $this->validates_fields(auth()->user()->getRoleNames()[0]);
@@ -54,7 +61,7 @@ class UsersController extends Controller
         $user = User::create($data_user);
 
         $data_names = request()->only('first_name', 'first_surname', 'second_name', 'second_surname');
-        $data_names = $this->capitalize($data_names);
+        $data_names = $this->format_names($data_names);
 
         if ($user->names()->create($data_names)) {
             $user->assignRole(request()->role);
@@ -64,6 +71,9 @@ class UsersController extends Controller
 
     }
 
+    /**
+     * Proporciona la vista adecuada dependiendo del rol del usuario actualmente loggeado
+     */
     public function edit()
     {
 
@@ -85,6 +95,9 @@ class UsersController extends Controller
 
     }
 
+    /**
+     * Actualiza los datos del usuario actualmente logeado
+     */
     public function update()
     {
 
@@ -92,7 +105,7 @@ class UsersController extends Controller
         $this->validates_fields($user->getRoleNames()[0], $user->id);
 
         $data_names = request()->only('first_name', 'first_surname', 'second_name', 'second_surname');
-        $data_names = $this->capitalize($data_names);
+        $data_names = $this->format_names($data_names);
 
         if ($user->hasRole(['admin', 'coordinator'])) {
 
@@ -116,6 +129,9 @@ class UsersController extends Controller
 
     }
 
+    /**
+     * Encuentra al usuario logeado actual y lo elimina junto con los archivos que halla subido
+     */
     public function destroy()
     {
         $user = auth()->user();
@@ -127,6 +143,12 @@ class UsersController extends Controller
         return redirect()->route('root_path');
     }
 
+    /**
+     * Metodo que realiza las validaciones de los datos para la creacion de nuevos usuarios.
+     * dependiendo del rol o si existe un id se aplican unas validaciones u otras
+     * @param  String $role rol del usuario, dependiendo del rol las validaciones cambian
+     * @param  String $id   identificador del usuario, si existe las validaciones cambian
+     */
     private function validates_fields($role, $id = '')
     {
 
@@ -162,11 +184,18 @@ class UsersController extends Controller
         
     }
 
-    private function capitalize($array)
+    /**
+     * Metodo que formata los nombres de los usuarios nuevos creados, estableciendoles un formato
+     * capitalize a los nombres.
+     * @param  array $array Coleccion de los nombres y apellidos de los usuarios nuevos
+     * @return array        Retorna un array con los nombres formateados en capitalize
+     */
+    private function format_names($array)
     {
-        $capitalize = function($v) {
-            return ucfirst($v);
+        $format = function($value) {
+            return ucfirst(strtolower($value));
         };
-        return array_map($capitalize, $array);
+
+        return array_map($format, $array);
     }
 }

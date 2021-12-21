@@ -7,17 +7,19 @@
 	<link rel="stylesheet" href="{{ asset('css/index.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<link rel="stylesheet" href="{{asset('css/workplace/dashboard.css')}}">
+	<link rel="icon" href="{{asset('images/sessions/logo GMVV(30x30).png')}}" type="image/png">
+	
 	@yield('css')
 </head>
 <body class="">
 
-		<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{route('root_path')}}">{{$user->departament->name}}</a>
+		<header class="navbar navbar-dark sticky-top bg-red-dark flex-md-nowrap p-0 shadow">
+		  <p class="navbar-brand col-md-3 col-lg-2 me-0 px-3 m-0">V-{{$user->cedula}}</p>
 		  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 		  {{-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> --}}
-		  <div id="relog" class="row align-items-center bg-dark w-100 h6 text-center text-white" style="height:30px">
+		  <div id="relog" class="row align-items-center w-100 h6 text-center text-white fw-bold" style="height:30px">
 		  	<p class="m-0"></p>
 		  </div>
 		  <div class="navbar-nav">
@@ -31,6 +33,7 @@
 	  <div class="row">
 	    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse overflow-scroll">
 	      <div class="position-sticky pt-3">
+	      	<h6 class="text-center fw-bold">{{$user->departament->name}}</h6>
 	        <ul class="nav flex-column">
 	          <li class="nav-item">
 	            <a class="nav-link @yield('active-1')" aria-current="page" href="{{route('workplace_path')}}">

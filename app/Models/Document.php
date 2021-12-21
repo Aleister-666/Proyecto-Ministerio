@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
+use App\Models\Client;
 use App\Models\Departament;
 
 class Document extends Model
@@ -18,10 +19,9 @@ class Document extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Retorna la relacion entre Documentos y Departamentos
-    public function departament()
+    public function client()
     {
-        return $this->belongsTo(Departament::class);
+        return $this->belongsTo(Client::class);
     }
 
     public function extension()
@@ -30,11 +30,9 @@ class Document extends Model
     }
 
     protected $fillable = [
-        'title',
-        'description',
         'file_name',
         'file_path',
         'user_id',
-        'departament_id'
+        'client_id'
     ];
 }

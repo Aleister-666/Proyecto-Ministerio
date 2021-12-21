@@ -14,7 +14,7 @@ class AddReferencesClientsToGmvvRequests extends Migration
     public function up()
     {
         Schema::table('gmvv_requests', function (Blueprint $table) {
-
+            
             $table->foreignId('client_id')
                 ->constrained('clients')
                 ->onUpdate('cascade')

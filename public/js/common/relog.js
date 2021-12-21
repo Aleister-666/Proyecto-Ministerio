@@ -1,3 +1,7 @@
+/**
+ * Metodo usado para crear un relog simple
+ * @return {[type]} [description]
+ */
 export default function relog() {
 	const d = document;
 	const $relog = d.getElementById('relog');

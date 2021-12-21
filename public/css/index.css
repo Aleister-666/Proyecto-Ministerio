@@ -4,4 +4,13 @@
 	--lg: 992px;
 	--xl: 1200px;
 	--xxl: 1400px;
+	--red-dark: #9c0000;
+}
+
+.bg-red-dark {
+	background: var(--red-dark);
+}
+.bg-white-t-a {
+	transition: all .3s ease;
+	background: #ffffff75;
 }

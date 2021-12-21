@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
-use App\Models\Document;
 use App\Models\Task;
 
 class Departament extends Model
@@ -24,13 +23,6 @@ class Departament extends Model
     {
         return $this->hasMany(User::class);
     }
-
-
-    //  Retorna la relacion entre un Departamento y sus documentos
-    // public function documents()
-    // {
-    //     return $this->hasMany(Document::class);
-    // }
 
     protected $fillable = [
         'name'

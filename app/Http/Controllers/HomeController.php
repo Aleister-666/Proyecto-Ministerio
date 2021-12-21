@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    /**
+     * Proporciona la vista para el Home
+     */
     public function index()
     {
         return view('home/index');

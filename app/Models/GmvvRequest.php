@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Task;
 use App\Models\Client;
@@ -22,6 +23,20 @@ class GmvvRequest extends Model
         return $this->belongsTo(Client::class);
     }
 
+
+    public function files_client($base_path)
+    {
+        $files = [];
+        $path;
+        
+        foreach ($this->toArray() as $key => $value) {
+            $path = "{$base_path}/{$value}";
+            $files[$key] = Storage::disk('departaments')->url($path);
+        }
+
+        return $files;
+    }
+
     protected $fillable = [
         'copy_ci',
         'contancy_job',
@@ -33,5 +48,13 @@ class GmvvRequest extends Model
         'explanatory_statement',
         'task_id',
         'client_id'
+    ];
+
+    protected $hidden = [
+        'id',
+        'task_id',
+        'client_id',
+        'created_at',
+        'updated_at'
     ];
 }

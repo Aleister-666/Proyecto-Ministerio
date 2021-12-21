@@ -23,7 +23,7 @@
 	</section>
 
 	<section id="navbar" class="sticky-top">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-red-dark">
 			<div class="container-fluid">
 
 				@if (auth()->check())

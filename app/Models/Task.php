@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 ////////////////////////////////////////////////////////////////
 // Aqui van los modelos relacionados a las tareas del sistema //
 ////////////////////////////////////////////////////////////////
+use App\Models\State;
 use App\Models\Departament;
 use App\Models\User;
 
@@ -21,6 +22,11 @@ use App\Models\GmvvRequest;
 class Task extends Model
 {
     use HasFactory;
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
 
     public function departament()
     {
@@ -38,6 +44,7 @@ class Task extends Model
     }
 
     protected $fillable = [
+        'state_id',
         'departament_id',
         'user_id'
     ];

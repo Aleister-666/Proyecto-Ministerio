@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\NamesClient;
+
 use App\Models\User;
+use App\Models\Document;
 use App\Models\GmvvRequest;
 
 class Client extends Model
@@ -21,6 +23,11 @@ class Client extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 
     public function gmvv_request()

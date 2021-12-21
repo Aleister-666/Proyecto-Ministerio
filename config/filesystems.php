@@ -37,7 +37,9 @@ return [
 
         'departaments' => [
             'driver' => 'local',
-            'root' => storage_path('app/departaments')
+            'root' => storage_path('app/departaments'),
+            'url' => '/departaments',
+            'visibility' => 'public'
         ],
 
         'public' => [
@@ -73,6 +75,8 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('departaments') => storage_path('app/departaments')
+
     ],
 
 ];

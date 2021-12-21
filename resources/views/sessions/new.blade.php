@@ -14,7 +14,7 @@
 		<div class="row justify-content-center align-items-center p-3 rounded-3 text-white bg-red-dark-transparent">
 
 			<div class="text-center">
-				<img src="{{asset('images/sessions/logo GMVV.png')}}" alt="">
+				<img src="{{asset('images/sessions/logo GMVV(100x100).png')}}" alt="Logo Gran Mision Vivienda Venezuela">
 			</div>
 			<form action="{{route('create_session_path')}}" method="POST">
 

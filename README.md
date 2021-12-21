@@ -1,0 +1,1 @@
+* Sistema de Información que facilite la actividad laboral y la gestión administrativa entre los distintos departamentos del Ministerio del Poder Popular de Hábitat y Vivienda.

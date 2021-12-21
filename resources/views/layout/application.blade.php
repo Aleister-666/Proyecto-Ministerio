@@ -6,6 +6,7 @@
 	<title>Ministerio del Poder Popular para Habitat y Vivienda</title>	
 	<link rel="stylesheet" href="{{ asset('css/index.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+	<link rel="icon" href="{{asset('images/sessions/logo GMVV(30x30).png')}}" type="image/png">
 	@yield('extra_css')
 </head>
 <body>
