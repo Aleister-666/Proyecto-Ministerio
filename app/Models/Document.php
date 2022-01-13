@@ -30,9 +30,16 @@ class Document extends Model
     }
 
     protected $fillable = [
+        'title',
+        'description',
         'file_name',
         'file_path',
         'user_id',
         'client_id'
+    ];
+
+    protected $attributes = [
+        'title' => null,
+        'description' => null
     ];
 }

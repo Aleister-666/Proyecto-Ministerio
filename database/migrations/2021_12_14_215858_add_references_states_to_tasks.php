@@ -18,7 +18,7 @@ class AddReferencesStatesToTasks extends Migration
                 ->nullable()
                 ->constrained('states')
                 ->onUpdate('cascade')
-                ->nullOnDelete();;
+                ->nullOnDelete();
         });
     }
 

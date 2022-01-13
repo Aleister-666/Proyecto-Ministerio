@@ -21,15 +21,16 @@ class DatabaseSeeder extends Seeder
 
 
         Departament::create(['name' => 'Redes Populares']);
-        Departament::create(['name' => 'MINHVHI']);
+        Departament::create(['name' => 'BANAVIH']);
         Departament::create(['name' => 'Informatica']);
 
-        Role::create(['name' => 'worker']);
-        Role::create(['name' => 'coordinator']);
         Role::create(['name' => 'admin']);
+        Role::create(['name' => 'coordinator']);
+        Role::create(['name' => 'worker']);
 
-        State::create(['name' => 'EN PROCESO']);
+        State::create(['name' => 'PROCESANDOCE']);
         State::create(['name' => 'CULMINADO']);
+        State::create(['name' => 'RECHAZADO']);
 
         $admin = User::create([
             'cedula' => '2629944',

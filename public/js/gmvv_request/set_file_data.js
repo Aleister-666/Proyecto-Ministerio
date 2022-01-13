@@ -49,11 +49,15 @@ const set_client_data = async (element) => {
 		alert(err);
 	}
 
+	datos = client_files;
+
 	$nav_tabs = $modal.querySelectorAll('.modal-body button.nav-link');
 
 	let n = 0;
 	for (key in client_files) {
-		$nav_tabs[n].classList.remove('disabled');
+		if (client_files[key] != null) {
+			$nav_tabs[n].classList.remove('disabled');
+		}
 		$nav_tabs[n].setAttribute('data-file-path', client_files[key]);
 		n++;
 	}

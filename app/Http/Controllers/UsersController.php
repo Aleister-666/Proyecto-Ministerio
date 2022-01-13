@@ -58,15 +58,20 @@ class UsersController extends Controller
                                                 ['password' => bcrypt(request('password')),
                                                  'departament_id' => request('departament')]);
 
-        $user = User::create($data_user);
 
-        $data_names = request()->only('first_name', 'first_surname', 'second_name', 'second_surname');
+        $data_names = request()->only('first_name', 'first_surname',
+                                      'second_name', 'second_surname');
+        
         $data_names = $this->format_names($data_names);
+
+        $user = User::create($data_user);
 
         if ($user->names()->create($data_names)) {
             $user->assignRole(request()->role);
             
             return back()->with('success', 'Usuario Registrado');
+        } else {
+            return back()->withErrors('error', 'Ha ocurrido un error en la creacion del usuario');
         }
 
     }

@@ -41,22 +41,23 @@ Route::middleware(['guest'])->group(function() {
 Route::get('logout', [SessionsController::class, 'destroy'])
 	->name('logout_path');
 
-Route::prefix('workplace')->group(function() {
+
+/**
+ * Rutas del espacio del trabajo. Aqui van todas las rutas de un usuario loggeado
+ */
+Route::prefix('workplace')->middleware(['auth'])->group(function() {
 
 
 	/**
 	 * Workplace
 	 */
-	Route::middleware(['auth'])->group(function() {
-		Route::get('', [WorkplaceController::class, 'index'])
-			->name('workplace_path');
-
-	});
+	Route::get('', [WorkplaceController::class, 'index'])
+		->name('workplace_path');
 
 	/**
 	 * Controlador de Usuario
 	 */
-	Route::middleware(['auth', 'role:admin|coordinator'])->group(function() {
+	Route::middleware(['role:admin|coordinator'])->group(function() {
 		Route::get('/create_user', [UsersController::class, 'new'])
 			->name('new_user_path');
 
@@ -67,20 +68,16 @@ Route::prefix('workplace')->group(function() {
 			->name('destroy_user_path');
 
 	});
-
-	Route::middleware(['auth'])->group(function() {
-		Route::get('/update_user', [UsersController::class, 'edit'])
+	Route::get('/update_user', [UsersController::class, 'edit'])
 			->name('edit_user_path');
 
 		Route::put('/update_user', [UsersController::class, 'update'])
 			->name('update_user_path');
-	});
-	
 
 	/**
 	 * Controlador de Peticion GMVV
 	 */	
-	Route::middleware(['auth', 'departament:Redes Populares'])->group(function() {
+	Route::middleware(['departament:Redes Populares'])->group(function() {
 
 		Route::get('/tasks/reports/gmvv_request', [GmvvRequestsController::class, 'index'])
 			->name('index_gmvv_request_path');
@@ -91,12 +88,22 @@ Route::prefix('workplace')->group(function() {
 		Route::post('/tasks/gmvv_request', [GmvvRequestsController::class, 'create'])
 			->name('create_gmvv_request_path');
 
+		Route::get('/tasks/gmvv_request/edit/{id}', [GmvvRequestsController::class, 'edit'])
+			->name('edit_gmvv_request_path');
+
+		Route::put('/tasks/gmvv_request/edit/{id}', [GmvvRequestsController::class, 'update'])
+			->name('update_gmvv_request_path');
+
 		Route::delete('/tasks/gmvv_request/delete/{id}', [GmvvRequestsController::class, 'destroy'])
 			->name('destroy_gmvv_request_path');
 
 		Route::get('/tasks/gmvv_request/download/{id}', [GmvvRequestsController::class, 'download'])
 			->name('download_gmvv_request_path');
 
+
+		/////////////////////////////////////////////////
+		//Rutas para la realizacion de peticiones ajax //
+		/////////////////////////////////////////////////
 		Route::get('/tasks/gmvv_request/search', [GmvvRequestsController::class, 'search'])
 			->name('search_gmvv_request_path');
 

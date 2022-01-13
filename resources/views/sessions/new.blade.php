@@ -20,7 +20,7 @@
 
 				@csrf
 
-				<h1>Login</h1>
+				<h1 class="text-center">Iniciar Session</h1>
 			
 				@error('message')
 					<div class="alert alert-danger text-center">
@@ -31,24 +31,24 @@
 				<div class="mb-3">
 					<label for="cedula" class="form-label">Cedula de Identidad</label>
 					<input type="tel" name="cedula" class="form-control">
-				</div>
 
-				@error('cedula')
-					<div class="alert alert-danger text-center">
-						<p class="m-0">{{$message}}</p>
-					</div>
-				@enderror
+					@error('cedula')
+						<div class="alert alert-danger login-field-alert p-0 text-center">
+							<p class="m-0">{{$message}}</p>
+						</div>
+					@enderror
+				</div>
 
 				<div class="mb-3">
 					<label for="password" class="form-label">Contraseña</label>
 					<input type="password" name="password" class="form-control">
-				</div>
 
-				@error('password')
-					<div class="alert alert-danger text-center">
-						<p class="m-0">{{$message}}</p>
-					</div>
-				@enderror
+					@error('password')
+						<div class="alert alert-danger login-field-alert p-0 text-center">
+							<p class="m-0">{{$message}}</p>
+						</div>
+					@enderror	
+				</div>
 
 				<div class="mb-3 form-check">
 					<input type="checkbox" name="remember" class="form-check-input" value="remember">

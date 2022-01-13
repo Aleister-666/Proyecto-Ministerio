@@ -15,14 +15,14 @@ class CreateGmvvRequestsTable extends Migration
     {
         Schema::create('gmvv_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('copy_ci');
-            $table->string('contancy_job');
-            $table->string('contancy_home');
-            $table->string('contancy_civil');
-            $table->string('birth_certificate_children');
-            $table->string('sworn_declaration');
-            $table->string('registration_form_gmvv');
-            $table->string('explanatory_statement');
+            $table->string('copy_ci', null)->nullable();
+            $table->string('contancy_job', null)->nullable();
+            $table->string('contancy_home', null)->nullable();
+            $table->string('contancy_civil', null)->nullable();
+            $table->string('birth_certificate_children', null)->nullable();
+            $table->string('sworn_declaration', null)->nullable();
+            $table->string('registration_form_gmvv', null)->nullable();
+            $table->string('explanatory_statement', null)->nullable();
 
             $table->timestamps();
         });

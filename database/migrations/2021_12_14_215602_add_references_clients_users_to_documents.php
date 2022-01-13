@@ -23,8 +23,7 @@ class AddReferencesClientsUsersToDocuments extends Migration
                 ->nullable()
                 ->constrained('clients')
                 ->onUpdate('cascade')
-                ->nullOnDelete();
-
+                ->onDelete('cascade');
         });
     }
 
