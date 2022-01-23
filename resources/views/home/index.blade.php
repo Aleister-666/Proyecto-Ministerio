@@ -39,22 +39,17 @@
 				<div id="navbarNav" class="collapse navbar-collapse">
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item">
-							<a href="#" class="nav-link">Link</a>
+							<a href="#notices" class="nav-link" title="Noticias">Noticias</a>
+						</li>
+
+						<li class="nav-item">
+							<a href="#mision" class="nav-link" title="Nuestra Mision">Mision</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">Link</a>
+							<a href="#vision" class="nav-link" title="Nuestra Vision">Vision</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">Link</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">Link</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">Link</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">Redes Populares</a>
+							<a href="#objetives-ministerio" class="nav-link" title="Nuestras Labores">Labores</a>
 						</li>
 					</ul>
 
@@ -72,7 +67,7 @@
 	</section>
 
 	<section id="notices" class="container">
-		<!-- <section id="carrusel">
+	{{-- 	<section id="carrusel">
 			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
 			  <div class="carousel-indicators">
 			    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -118,29 +113,29 @@
 			    <span class="visually-hidden">Siguiente</span>
 			  </button>
 			</div>
-		</section> -->
+		</section> --}}
+	</section>
 
-		<section id="content">
-			<div class="box">
-				<div class="image-box">
-					<img src="{{asset('images/home/Maduro.png')}}" alt="">
-				</div>
-				<div class="text-box">
-					<h2>Nuestra Mision</h2>
-					<p class="fs-5">"Satisfacer las necesidades de vivienda, obras de urbanismo y servicios básicos de infraestructura y equipamiento integral de las áreas urbanas, sub-urbanas y rurales de la población de escasos recursos, orientados bajo una filosofía de calidad, con un personal altamente calificado, enmarcado en un liderazgo de principios y preocupado por la innovación tecnológica, impulsando el desarrollo integral de la población a través de la ejecución de obras y la satisfacción de la demanda habitacional en el marco del plan de desarrollo económico y social"</p>
-				</div>
+	<section id="cards" class="container">
+		<div id="mision" class="box">
+			<div class="image-box">
+				<img src="{{asset('images/home/Maduro.png')}}" alt="">
 			</div>
+			<div class="text-box">
+				<h2>Nuestra Mision</h2>
+				<p class="fs-5">"Satisfacer las necesidades de vivienda, obras de urbanismo y servicios básicos de infraestructura y equipamiento integral de las áreas urbanas, sub-urbanas y rurales de la población de escasos recursos, orientados bajo una filosofía de calidad, con un personal altamente calificado, enmarcado en un liderazgo de principios y preocupado por la innovación tecnológica, impulsando el desarrollo integral de la población a través de la ejecución de obras y la satisfacción de la demanda habitacional en el marco del plan de desarrollo económico y social"</p>
+			</div>
+		</div>
 
-			<div class="box">
-				<div class="image-box">
-					<img src="{{asset('images/home/Ministro del poder popular para habitat y vivienda.png')}}" alt="">
-				</div>
-				<div class="text-box">
-					<h2>Nuestra Vision</h2>
-					<p class="fs-5">"Ser un organismo rector de la política habitacional, de consolidación y ordenamiento de las áreas urbanas y rurales de la población de escasos recursos del Estado, capaz de disminuir notoriamente el déficit habitacional de las familias, bajo criterios de calidad, eficiencia y ética, para contribuir con un ambiente digno donde las familias se desarrollen y puedan incorporarse al sistema productivo, contando con un equipo humano comprometido, capacitado, actualizado y orgulloso de pertenecer al instituto"</p>
-				</div>
+		<div class="box">
+			<div id="vision" class="image-box">
+				<img src="{{asset('images/home/Ministro del poder popular para habitat y vivienda.png')}}" alt="">
 			</div>
-		</section>
+			<div class="text-box">
+				<h2>Nuestra Vision</h2>
+				<p class="fs-5">"Ser un organismo rector de la política habitacional, de consolidación y ordenamiento de las áreas urbanas y rurales de la población de escasos recursos del Estado, capaz de disminuir notoriamente el déficit habitacional de las familias, bajo criterios de calidad, eficiencia y ética, para contribuir con un ambiente digno donde las familias se desarrollen y puedan incorporarse al sistema productivo, contando con un equipo humano comprometido, capacitado, actualizado y orgulloso de pertenecer al instituto"</p>
+			</div>
+		</div>
 	</section>
 
 	<section id="objetives-ministerio">
@@ -161,7 +156,7 @@
 					<img src="{{asset('images/home/svg/objetive-2')}}.svg" alt="">
 				</div>
 				<div class="obj-description">
-					<p>Realizar ventas de tierras pertenecientes al estado, destinados a la construcción de viviendas.</p>
+					<p>Adjudicar tierras pertenecientes al estado, destinados a la construcción de viviendas.</p>
 				</div>
 			</div>
 			<div id="objetive-3" class="item-obj-minis obj-2">

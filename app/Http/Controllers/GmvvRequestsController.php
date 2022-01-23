@@ -77,7 +77,9 @@ class GmvvRequestsController extends Controller
         ]);
 
         if ($gmvv_request) {
-            return back()->with('success', 'Peticion Registrada');
+            return redirect()
+                ->route('index_gmvv_request_path')
+                ->with('success', 'Peticion Registrada');
         } else {
             $task->delete();
             $client->delete();

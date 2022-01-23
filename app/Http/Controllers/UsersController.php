@@ -21,7 +21,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Proporciona la vista correspondiente con el rol del usuario
+     * Proporciona la vista de creacion de nuevos usuarios correspondiente con el rol del usuario loggeado
      * @return [type] [description]
      */
     public function new()
@@ -69,15 +69,18 @@ class UsersController extends Controller
         if ($user->names()->create($data_names)) {
             $user->assignRole(request()->role);
             
-            return back()->with('success', 'Usuario Registrado');
+            return redirect()
+                ->route('workplace_path')
+                ->with('success', 'Usuario Registrado');
         } else {
             return back()->withErrors('error', 'Ha ocurrido un error en la creacion del usuario');
         }
 
     }
 
+
     /**
-     * Proporciona la vista adecuada dependiendo del rol del usuario actualmente loggeado
+     * Proporciona la vista de edicion de usuario adecuada dependiendo del rol del usuario logeado loggeado
      */
     public function edit()
     {

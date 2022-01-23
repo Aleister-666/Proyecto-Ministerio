@@ -48,7 +48,7 @@
 		      		<td id="cedula-{{$client->id}}">{{$client->cedula}}</td>
 		      		<td id="names-{{$client->id}}">{{$client->names->first_name . " " . $client->names->second_name}}</td>
 		      		<td id="surnames-{{$client->id}}">{{$client->names->first_surname . " " . $client->names->second_surname}}</td>
-		      		<td>{{$client->email}}</td>
+		      		<td>{{$client->email ? $client->email : 'Sin Correo'}}</td>
 		      		<td>{{$client->telefono ? $client->telefono : 'Sin Telefono'}}</td>
 
 		      		<td title="{{$client->gmvv_request->task->state->name}}">
@@ -75,12 +75,6 @@
 
 		      		<td>
 		      			<div class="btn-group" role="group" aria-label="Basic outlined example">
-		      				{{-- <button type="button" class="btn btn-outline-secondary shadow-none" title="Informacion del Cliente" data-bs-toggle="modal" data-bs-target="#edit-modal">
-		      				  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-		      				    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-		      				    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-		      				  </svg>
-		      				</button> --}}
 
 		      				<a href="{{route('edit_gmvv_request_path', $client->gmvv_request->id)}}" title="Editar Peticion" class="btn btn-outline-secondary shadow-none">
 		      					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -124,11 +118,7 @@
 	</div>
 
   <div id="modals">
-  	@include('gmvv_requests/partials/edit_modal', [
-  		'modal_id' => 'edit-modal',
-  		'modal_title' => 'Informacion de Petcion'
-		])
-
+  	
 	  @include('commons/confirmation_modal', [
 	  	'modal_id' => 'confirmation-delete',
 	  	'modal_title' => "Borrar Cliente y Registro",
@@ -148,7 +138,5 @@
 	<script src="{{ asset('js/gmvv_request/search.js') }}"></script>
 	<script src="{{ asset('js/gmvv_request/delete_confirm.js') }}"></script>
 	<script src="{{asset('js/gmvv_request/set_file_data.js')}}"></script>
-
-	<script src="{{asset('js/gmvv_request/file_control.js')}}"></script>
 
 @endsection

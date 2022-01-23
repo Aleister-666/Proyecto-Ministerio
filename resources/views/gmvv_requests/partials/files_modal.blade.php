@@ -8,27 +8,24 @@
       <div class="modal-body">
         <nav>
           <div class="nav nav-tabs flex-nowrap overflow-auto" id="nav-tab" role="tablist">
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" title="Copias de la cedula de Identidad" data-file-path="">Cedulas</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="true" title="Copias de la cedula de Identidad" data-file-path="">Cedulas</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Constancia de trabajo" data-file-path="">C.Trabajo</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Constancia de trabajo" data-file-path="">C.Trabajo</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Constancia de residencia" data-file-path="">C.Residencia</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Constancia de residencia" data-file-path="">C.Residencia</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Constancia de matrimonio, solteria, union...." data-file-path="">C.Matrimonio</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Constancia de matrimonio, solteria, union...." data-file-path="">C.Matrimonio</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Partidas de nacimiento de hijos menores" data-file-path="">P.Nacimientos</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Partidas de nacimiento de hijos menores" data-file-path="">P.Nacimientos</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Declaracion jurada de no poseer vivienda" data-file-path="">D.Jurada</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Declaracion jurada de no poseer vivienda" data-file-path="">D.Jurada</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Plantilla de inscripcion Gran Mision Vivienda Venezuela" data-file-path="">Pl.GMVV</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Plantilla de inscripcion Gran Mision Vivienda Venezuela" data-file-path="">Pl.GMVV</a>
 
-            <button class="nav-link disabled" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" title="Exposicion de motivos" data-file-path="">E.Motivos</button>
+            <a href="#" class="nav-link disabled" target="_blank" type="button" role="tab" aria-selected="false" title="Exposicion de motivos" data-file-path="">E.Motivos</a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="nav-home-tab">
-            <iframe id="frame-document" class="d-none" src="" frameborder="0" width="100%" height="100%"></iframe>
-          </div>
         </div>
       </div>
       <div class="modal-footer">
